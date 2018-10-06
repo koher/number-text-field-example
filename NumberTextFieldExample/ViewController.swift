@@ -23,7 +23,9 @@ class ViewController: UIViewController {
 
 extension ViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        return string.isEmpty || Int(string) != nil
+        if string.isEmpty { return true }
+        if (textField.text ?? "") == "" && string.first! == "0" { return false }
+        return Int(string) != nil
     }
 }
 
